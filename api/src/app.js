@@ -25,7 +25,7 @@ server.use((req, res, next) => {
 server.use('/', routes);
 
 //Routes
-server.use('/pokemons', require('./routes/pokemon'))
+//server.use('/pokemons', require('./routes/pokemon'))
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

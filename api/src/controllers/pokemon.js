@@ -1,10 +1,41 @@
 const axios = require('axios')
 const { v4: uuidv4 } = require('uuid')
 const { Pokemon, Type } = require('../db')
-//const {Sequelize, Op} = require('sequelize')
 const { POKE_URL, TYPE_URL } = require('../utils/constants')
 
 const pokeCtrl = {}
+
+pokeCtrl.getPokemonById = async (req, res, next) => {
+    const { id } = req.params
+    try {
+        if (id.length > 5) {
+            const myPokemonDbId = await Pokemon.findAll({ where: { id: id } })
+            res.json(myPokemonDbId)
+        }
+        else {
+            const { data } = await axios(`${POKE_URL}/${id}`)
+            const myPokeApiId = {
+                id: data.id,
+                name: data.name,
+                //sprite: data.sprites.other.dream_world.front_default,
+                weight: data.weight,
+                height: data.height,
+                sprite: data.sprites.other["official-artwork"].front_default,
+                types: data.types.map((e) => {
+                    return e.type.name
+                }),
+                hp: data.stats[0].base_stat,
+                attack: data.stats[1].base_stat,
+                defense: data.stats[2].base_stat,
+                speed: data.stats[5].base_stat,
+            }
+            return res.json(myPokeApiId)
+        }
+    }
+    catch (error) {
+        next(res.status(404).json({ message: 'Pokemon id not found!' }))
+    }
+}
 
 pokeCtrl.getPokemons = async (req, res, next) => {
     let { name } = req.query //ó let name = req.query.name
@@ -13,15 +44,22 @@ pokeCtrl.getPokemons = async (req, res, next) => {
 
     if (name) {
         try {
-            const pokeDbName = await Pokemon.findAll({where: {name:name}})
-            if(pokeDbName.length !== 0) {
+            const pokeDbName = await Pokemon.findAll({ where: { name: name } })
+            if (pokeDbName.length !== 0) {
                 return res.json(pokeDbName)
             } else {
-                await axios(`${POKE_URL}/${name}`)
-                .then(results => {
-                    const data = (results.data)
-                    return res.json(data)
-                })
+                const { data } = await axios(`${POKE_URL}/${name}`)
+                const myPokeApiName = {
+                    id: data.id,
+                    name: data.name,
+                    sprite: data.sprites.other.dream_world.front_default,
+                    /* weight: data.weight,
+                    height: data.height, */
+                    types: data.types.map((e) => {
+                        return e.type.name
+                    })
+                }
+                return res.json(myPokeApiName)
             }
         }
         catch (error) {
@@ -29,10 +67,31 @@ pokeCtrl.getPokemons = async (req, res, next) => {
         }
     }
     else {
-        const results = pokeDb.concat(pokeApi.data)
+        const resultsUrl = pokeApi.data.results.map(el => el.url)
+        const pokeList = resultsUrl.map(async url => {
+            try {
+                const { data } = await axios.get(url)
+                //console.log(data.name)
+                const myPokeURL = {
+                    id: data.id,
+                    name: data.name,
+                    sprite: data.sprites.other.dream_world.front_default,
+                    //sprite: data.sprites.other["official-artwork"].front_default,
+                    types: data.types.map((e) => {
+                        return e.type.name
+                    })
+                }
+                return myPokeURL
+            }
+            catch (error) {
+                //console.log('Error con busqueda URL:', url)
+                next(error)
+            }
+        })
+        const promisesArr = await Promise.all(pokeList)
+        const results = pokeDb.concat(promisesArr)
         return res.json(results)
     }
-
 }
 
 
@@ -49,21 +108,4 @@ pokeCtrl.createPokemon = async (req, res, next) => {
     }
 }
 
-
-pokeCtrl.getPokemonById = async (req, res, next) => {
-    const id = req.params.id
-    try {
-        if (id.length) {
-            const myPokemon = await Pokemon.findByPk(id)
-            res.json(myPokemon)
-        }
-        else {
-            await axios(POKE_URL)
-            res.send('traer los de la API')
-        }
-    }
-    catch (error) {
-        next(res.status(404).json({ message: 'Pokemon not found!' }))
-    }
-}
 module.exports = pokeCtrl

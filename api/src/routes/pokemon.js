@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const axios = require('axios')
+//const axios = require('axios')
 //const { Pokemon, Type } = require('../db')
 //const {Sequelize} = require('sequelize')
 
