@@ -1,13 +1,20 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { LandingStyle } from './landingPageStyle.jsx';
 
 export default function LandingPage() {
     return (
-        <div>
-            <p>Pokedex</p>
-            <Link to='/home'>
-            <button>Enter!</button>
-            </Link>
-        </div>
+        <LandingStyle>
+            <div className='general'>
+                <div>
+                    <p>Pokedex: CAMBIAR ESTO</p>
+                </div>
+                <div>
+                    <Link to={'/home'}>
+                        <button>Start!</button>
+                    </Link>
+                </div>
+            </div>
+        </LandingStyle>
     )
 }

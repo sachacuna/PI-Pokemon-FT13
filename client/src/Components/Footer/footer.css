@@ -1,0 +1,12 @@
+
+#footerCont {
+    text-align: center;
+}
+
+#footerUl li{
+    display: inline;
+    padding-left:30px;
+    padding-right:30px;
+    color: rgb(27, 27, 27);
+    
+}

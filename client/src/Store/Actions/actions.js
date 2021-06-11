@@ -1,11 +1,11 @@
 import axios from 'axios'
 export const GET_POKEMONS = 'GET_POKEMONS'
-export const GET_POKEMON_NAME = 'GET_POKEMON_NAME'
-
-
+export const GET_POKEMON_ID = 'GET_POKEMON_ID'
+//import { POKE_URL } from '../../Constants/constants'
+ 
 export function getPokemons() {
     return function(dispatch) {
-        return axios.get('http://localhost:3001/pokemon')
+        return axios.get(`http://localhost:3001/pokemons`)
         .then((pokemons)=>{
             dispatch({
                 type: 'GET_POKEMONS',
@@ -15,12 +15,12 @@ export function getPokemons() {
     }
 }
  
-export function getPokemonName(name) {
+export function getPokemonId(id) {
     return function(dispatch) {
-        return axios.get(`http://localhost:3001/pokemon/?name=`+name)
+        return axios.get(`http://localhost:3001/pokemons/${id}`)
         .then((pokemons)=>{
             dispatch({
-                type: 'GET_POKEMON_NAME',
+                type: 'GET_POKEMON_ID',
                 payload: pokemons.data
             })
         })

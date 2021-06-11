@@ -1,0 +1,18 @@
+#navList li {
+    display:inline;
+    padding-left:30px;
+    padding-right:30px;
+    color: rgb(241, 241, 78);
+}
+#navBack {
+    background-color:rgb(29, 29, 29);
+    text-align: center;
+} 
+
+#bigDiv {
+    background-image: url('https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png');
+    background-color: #80AF72;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
