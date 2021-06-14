@@ -16,7 +16,7 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
             const { data } = await axios(`${POKE_URL}/${id}`)
             const myPokeApiId = {
                 id: data.id,
-                name: data.name,
+                name: data.name.toUpperCase(),
                 //sprite: data.sprites.other.dream_world.front_default,
                 weight: data.weight,
                 height: data.height,

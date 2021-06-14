@@ -3,7 +3,7 @@ import React from 'react'
 //import { POKE_URL } from '../../Constants/constants'
 //import { connect } from 'react-redux'
 import { useEffect } from 'react'
-import { getPokemonId, getPokemons } from '../../Store/Actions/actions'
+import { getPokemonId, getPokemons , getPokemonName} from '../../Store/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from '../Card/Card'
 

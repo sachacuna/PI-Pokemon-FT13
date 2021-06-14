@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import PokeCards from '../PokeCards/pokeCards'
 import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
 import '../Home/home.css'
+import Search from '../Search/search'
 
 export default function Home() {
     return (
@@ -24,11 +25,13 @@ export default function Home() {
                     <FaSortAlphaDownAlt />
                 </li>
                 <li>
-                    <input placeholder="Insert Pokename here!" />
+                    <Search/>
                 </li>
             </ul>
+            </div> 
+            <div id='wrapper'>
+            <PokeCards id='cards' />
             </div>
-            <PokeCards />
             <p>paginados</p>
         </div>
     )

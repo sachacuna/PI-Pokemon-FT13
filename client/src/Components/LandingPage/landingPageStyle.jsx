@@ -10,7 +10,7 @@ export const LandingStyle = styled.div`
         margin-top:15%;
     };
     p {
-        color:#011936;
+        color:#DE4224;
         width: 600px;
         margin-left:15%;
         font-size: 40px;
@@ -27,7 +27,7 @@ export const LandingStyle = styled.div`
         font-size: 30px;
         font-weight: 600;
         margin-left:220px;
-        border-radius: 10px;
+        border-radius: 1px;
     };
     button:hoover {
         background-color: #FFD79C; 

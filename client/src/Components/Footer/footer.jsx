@@ -8,12 +8,12 @@ const Footer = () => {
         <div id='footerCont'>
             <ul id='footerUl' >
                 <li>
-                <Link to="https://github.com/sachacuna">
+                <Link to={"https://github.com/sachacuna"}>
                     <SiGithub />
                 </Link>
                 </li>
                 <li>
-                <Link to="https://www.linkedin.com/in/sacha-emmanuel-cuna">
+                <Link to={"https://www.linkedin.com/in/sacha-emmanuel-cuna"}>
                     <SiLinkedin />
                 </Link>
                 </li>
