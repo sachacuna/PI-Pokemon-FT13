@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { getPokemonId, getPokemons , getPokemonName} from '../../Store/Actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from '../Card/Card'
+import style from '../PokeCards/pokeCards.module.css'
 
 function PokeCards() {
   const dispatch = useDispatch() //disparamos la accion
@@ -16,9 +17,9 @@ function PokeCards() {
 
   const pokemons = useSelector((state) => state.pokemons)
   return (
-    <div>
+    <div className={style.Card}>
       {
-        pokemons.map((poke) => {
+        pokemons?.map((poke) => {
           return (
             <Card
               id={poke.id}

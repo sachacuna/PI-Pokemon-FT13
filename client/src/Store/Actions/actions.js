@@ -5,9 +5,10 @@ export const GET_POKEMON_ID = 'GET_POKEMON_ID'
 export const GET_POKEMON_NAME = 'GET_POKEMON_NAME'
  
 export function getPokemons() {
-    return function(dispatch) {
-        return axios.get(`${POKE_URL}`)
+    return async function(dispatch) {
+        return await axios.get(`${POKE_URL}`)
         .then((pokemons)=>{
+            console.log(pokemons)
             dispatch({
                 type: 'GET_POKEMONS',
                 payload: pokemons.data
@@ -17,8 +18,8 @@ export function getPokemons() {
 }
  
 export function getPokemonId(id) {
-    return function(dispatch) {
-        return axios.get(`${ID_URL}${id}`)
+    return async function(dispatch) {
+        return await axios.get(`${ID_URL}${id}`)
         .then((pokemons)=>{
             dispatch({
                 type: 'GET_POKEMON_ID',
@@ -29,8 +30,8 @@ export function getPokemonId(id) {
 }
 
 export function getPokemonName(name) {
-    return function(dispatch) {
-        return axios.get(`${NAME_URL}${name}`)
+    return async function(dispatch) {
+        return await axios.get(`${NAME_URL}${name}`)
         .then((pokemons)=>{
             dispatch({
                 type: 'GET_POKEMON_NAME',

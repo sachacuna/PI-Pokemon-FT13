@@ -15,8 +15,8 @@
     background: rgb(252,207,126);
     background: linear-gradient(0deg, rgba(252,207,126,1) 0%, rgba(250,108,47,1) 76%, rgba(255,28,28,1) 95%); 
     opacity: 90%;
-    height: 23%;
-    width: 17%;
+    height: 290px;
+    width: 200px;
     color: whitesmoke;
     padding-top: 2px;
     padding-bottom: 5px;
@@ -27,3 +27,4 @@
     justify-content:center;
     text-align: center;
 }
+

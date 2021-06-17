@@ -40,7 +40,7 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
 pokeCtrl.getPokemons = async (req, res, next) => {
     let { name } = req.query //ó let name = req.query.name
     const pokeDb = await Pokemon.findAll()
-    const pokeApi = await axios(POKE_URL)
+    const pokeApi = await axios(`${POKE_URL}/?limit=40&offset=0`) 
 
     if (name) {
         try {
