@@ -1,20 +1,31 @@
 #navList li {
     display:inline;
+    align-items: center;
     padding-left:30px;
     padding-right:30px;
     color: rgb(241, 241, 78);
 }
+#navList  {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 0%;
+}
 #navBack {
     background-color:rgb(29, 29, 29);
     text-align: center;
+    margin: 0px;
 } 
 
 #bigDiv {
     background-image: url('https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png');
-    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+    background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
+    margin-top: -1%;
 }
 
 .wrapper {

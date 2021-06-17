@@ -3,6 +3,7 @@ import './cardDetails.css'
 
 
 function CardDetail({ name, sprite, id, types, height, weight, hp, attack, defense, speed }) {
+    
     return (
         <div id='detailCard'>
             <div id='detailImg'>
