@@ -4,7 +4,6 @@ import PokeCards from '../PokeCards/pokeCards'
 import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
 import '../Home/home.css'
 import Search from '../Search/search'
-import Pag from '../Pagination/pag';
 
 export default function Home() {
     
@@ -34,7 +33,6 @@ export default function Home() {
             <div id='wrapper'>
                 <PokeCards id='cards' />
             </div>
-            <Pag />
         </div>
     )
 }

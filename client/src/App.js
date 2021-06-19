@@ -3,7 +3,6 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import Home from './Components/Home/home'
 import LandingPage from './Components/LandingPage/landingPage'
-import PokeCards from './Components/PokeCards/pokeCards'
 import Footer from './Components/Footer/footer'
 import PokeDetail from './Components/PokeDetail/pokeDetail'
 import PokeSearch from './Components/PokeSearch/pokeSearch'
@@ -15,7 +14,7 @@ function App() {
       <Route path='/home' component={Home} />
       <Route path='/pokemon/:id' component={PokeDetail} />
       <Route path='/pokemon/{name}' component={PokeSearch} />
-      <Route path='/home' component={Footer} />
+      <Route path='/:o' component={Footer} />
     </React.Fragment>
   );
 }

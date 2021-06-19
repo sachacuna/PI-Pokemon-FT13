@@ -5,7 +5,10 @@ import {
     GET_ORDER_ASC,
     GET_ORDER_DESC,
     GET_ORDER_WEAKEST,
-    GET_ORDER_STRONGEST
+    GET_ORDER_STRONGEST,
+    GET_FILTER_API,
+    GET_FILTER_DB,
+    GET_FILTER_TYPE
 } from '../Actions/actions'
 
 const initialState = {
@@ -49,6 +52,22 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 pokemons: action.payload,
             }
+        // case GET_FILTER_API:
+        //     return {
+        //         ...state,
+        //         filter: state.pokemons.filter(p=>p.id<900).sort(),
+        //     }
+        // case GET_FILTER_DB:
+        //     return {
+        //         ...state,
+        //         filter: state.pokemons.filter(p=>p.id.length>3).sort(),
+        //     }
+        // GET_FILTER_TYPE:
+        //     return {
+        //         ...state,
+        //         filter: state.pokemons.filter(p=>p.type===selectedType)
+        //     }
+
         default:
             return { ...state }
     }

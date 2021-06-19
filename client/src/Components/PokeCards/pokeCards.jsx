@@ -17,12 +17,12 @@ function PokeCards() {
   const pokemons = useSelector((state) => state.pokemons)
   const pokePerPage = 12
 
-  const nextPage = async () => {
-    await setCurrentPage(currentPage + pokePerPage)
+  const nextPage =  () => {
+     setCurrentPage(currentPage + pokePerPage)
   }
-  const previousPage = async () => {
+  const previousPage =  () => {
     if (currentPage > 0)
-      await setCurrentPage(currentPage - pokePerPage)
+       setCurrentPage(currentPage - pokePerPage)
   }
 
   const realPage = (currentPage / pokePerPage) + 1
@@ -51,9 +51,9 @@ function PokeCards() {
         }
       </div>
       <div className={style.Pages}>
-        <button className={style.Buttons} onClick={previousPage}>PREVIOUS</button>
-        <button className={style.Buttons}>{realPage}</button>
-        <button className={style.Buttons} onClick={nextPage}>NEXT</button>
+        <button className={style.Buttons} onClick={previousPage}>Previous</button>
+        <button className={style.Buttons}>Page {realPage}</button>
+        <button className={style.Buttons} onClick={nextPage}>Next</button>
       </div>
     </div>
   )

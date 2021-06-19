@@ -12,6 +12,7 @@ function CardDetail({ name, sprite, id, types, height, weight, hp, attack, defen
             <div id='infoCard'>
                 <h2>{name}</h2>
                 <h4> Pokemon number # {id}</h4>
+                <h4> HP: {hp} </h4>
                 <h4> Height: {height} </h4>
                 <h4> Weight: {weight} </h4>
                 <h4> Attack: {attack} </h4>

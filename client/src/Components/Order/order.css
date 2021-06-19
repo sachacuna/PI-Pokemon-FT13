@@ -8,6 +8,33 @@
 	text-decoration: none;
 	font-size: 15px;
 	font-weight: 600;
-	margin-left:220px;
 	border-radius: 3px;
+    margin: 5px
 };
+
+#Buttons form {
+    display:flex;
+}
+#Buttons h4 {
+	color: rgb(53, 49, 49)
+}
+
+#Buttons  {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#Buttons select {
+	display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+	margin: 5px
+}
