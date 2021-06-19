@@ -77,6 +77,7 @@ pokeCtrl.getPokemons = async (req, res, next) => {
                     name: data.name,
                     sprite: data.sprites.other.dream_world.front_default,
                     //sprite: data.sprites.other["official-artwork"].front_default,
+                    hp: data.stats[0].base_stat,
                     types: data.types.map((e) => {
                         return e.type.name
                     })

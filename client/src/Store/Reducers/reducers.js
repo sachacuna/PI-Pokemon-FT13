@@ -1,14 +1,23 @@
-import {GET_POKEMONS, GET_POKEMON_ID, GET_POKEMON_NAME} from '../Actions/actions'
+import {
+    GET_POKEMONS,
+    GET_POKEMON_ID,
+    GET_POKEMON_NAME,
+    GET_ORDER_ASC,
+    GET_ORDER_DESC,
+    GET_ORDER_WEAKEST,
+    GET_ORDER_STRONGEST
+} from '../Actions/actions'
 
 const initialState = {
     pokemons: [],
-    pokemonDetail: {}
+    pokemonDetail: {}, //porque es del detail
+    pokemonName: {}, //porque es del search
 }
 
 const reducers = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case GET_POKEMONS:
-            return { 
+            return {
                 ...state,
                 pokemons: action.payload,
             }
@@ -20,8 +29,28 @@ const reducers = (state = initialState, action) => {
             return {
                 pokemons: action.payload,
             }
-        default: 
-            return {...state} 
+        case GET_ORDER_ASC:
+            return {
+                ...state,
+                pokemons: action.payload,
+            }
+        case GET_ORDER_DESC:
+            return {
+                ...state,
+                pokemons: action.payload,
+            }
+        case GET_ORDER_WEAKEST:
+            return {
+                ...state,
+                pokemons: action.payload,
+            }
+        case GET_ORDER_STRONGEST:
+            return {
+                ...state,
+                pokemons: action.payload,
+            }
+        default:
+            return { ...state }
     }
 }
 

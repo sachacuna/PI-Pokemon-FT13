@@ -17,7 +17,7 @@ function CardDetail({ name, sprite, id, types, height, weight, hp, attack, defen
                 <h4> Attack: {attack} </h4>
                 <h4> Speed: {speed} </h4>
                 <h4> Defense: {defense} </h4>
-                <h4> Types: {types} </h4>
+                <h4> Types: {types?.join(' and ')} </h4>
                 <div id="buttonsDiv">
                 <form action={`http://localhost:3000/pokemon/${id-1}`}>
                     <input type="submit" value="< PREVIOUS" />

@@ -4,15 +4,17 @@ import PokeCards from '../PokeCards/pokeCards'
 import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
 import '../Home/home.css'
 import Search from '../Search/search'
+import Pag from '../Pagination/pag';
 
 export default function Home() {
+    
     return (
         <div id='bigDiv'>
             <div id='navBack'>
                 <ul id="navList">
                     <li>
                         <Link to='/'>
-                            <img src="https://cdn.theorg.com/d3119e0e-8202-4034-85ce-d0356382515e_thumb.jpg" alt='Henry Logo' height='55px' width='55px' />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt='Pokemon Logo' height='55px' width='55px' />
                         </Link>
                     </li>
                     <li>
@@ -32,7 +34,7 @@ export default function Home() {
             <div id='wrapper'>
                 <PokeCards id='cards' />
             </div>
-            <p>paginados</p>
+            <Pag />
         </div>
     )
 }

@@ -27,7 +27,7 @@ export const LandingStyle = styled.div`
         font-size: 30px;
         font-weight: 600;
         margin-left:220px;
-        border-radius: 1px;
+        border-radius: 3px;
     };
     button:hoover {
         background-color: #FFD79C; 

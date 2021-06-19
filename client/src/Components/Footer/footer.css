@@ -1,12 +1,26 @@
 
 #footerCont {
     text-align: center;
+    background-color: rgb(255, 225, 127);
+    color: rgb(235, 60, 60);
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 #footerUl li{
     display: inline;
     padding-left:30px;
     padding-right:30px;
-    color: rgb(27, 27, 27);
-    
+}
+#footerUl h4{
+    font-size: 16px;
+}
+
+#logoGit {
+    height: 37px;
+    width: 37px;
+}
+#logoLin {
+    height: 37px;
+    width: 37px;
 }
