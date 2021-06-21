@@ -7,7 +7,7 @@ export default function LandingPage() {
         <LandingStyle>
             <div className='general'>
                 <div>
-                    <p>Prepárate para la aventura Pokemon!</p>
+                    <p>Prepárate para la aventura Pokémon!</p>
                 </div>
                 <div>
                     <Link to={'/home'}>

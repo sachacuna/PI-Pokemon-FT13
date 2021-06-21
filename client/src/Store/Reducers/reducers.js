@@ -8,13 +8,18 @@ import {
     GET_ORDER_STRONGEST,
     GET_FILTER_API,
     GET_FILTER_DB,
-    GET_FILTER_TYPE
+    GET_FILTER_TYPE,
+    GET_TYPES,
+    SET_LOADING
 } from '../Actions/actions'
 
 const initialState = {
     pokemons: [],
     pokemonDetail: {}, //porque es del detail
     pokemonName: {}, //porque es del search
+    types: [],
+    filtered: [],
+    loading: false
 }
 
 const reducers = (state = initialState, action) => {
@@ -23,6 +28,7 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 pokemons: action.payload,
+                loading: false
             }
         case GET_POKEMON_ID:
             return {
@@ -62,12 +68,21 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 pokemons: state.pokemons.filter(p => typeof p.id === 'number')
             }
-        /* case GET_FILTER_TYPE:
+        case GET_TYPES:
             return {
                 ...state,
-                types: state.types.filter(p=>p.type===selectedType)
+                types: action.payload
             }
- */
+        case GET_FILTER_TYPE:
+            return {
+                ...state,
+                filtered: action.payload //por el estado especial de filtros
+            }
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: true
+            }
         default:
             return { ...state }
     }

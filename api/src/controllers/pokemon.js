@@ -7,6 +7,7 @@ const pokeCtrl = {}
 
 pokeCtrl.getPokemonById = async (req, res, next) => {
     const { id } = req.params
+    console.log(id)
     try {
         if (id.length > 5) {
             const myPokemonDbId = await Pokemon.findAll({ where: { id: id } })

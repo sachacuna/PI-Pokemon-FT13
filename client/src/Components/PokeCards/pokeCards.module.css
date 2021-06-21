@@ -5,7 +5,26 @@
 	grid-gap: 10px;
 	margin-left: 6%;
 	margin-right: 0%;
-	height: 900px;
+	height: 290px;
+}
+
+
+
+
+.Cards {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-gap: 10px;
+	margin-left: 6%;
+	margin-right: 0%;
+	height: 145vh;
+}
+.Cards h4{
+	color: rgb(39, 39, 39);
+	display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Pages {

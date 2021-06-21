@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { POKE_URL, NAME_URL, ID_URL } from '../../Constants/constants'
+import { POKE_URL, NAME_URL, TYPE_URL, ID_URL } from '../../Constants/constants'
 export const GET_POKEMONS = 'GET_POKEMONS'
 export const GET_POKEMON_ID = 'GET_POKEMON_ID'
 export const GET_POKEMON_NAME = 'GET_POKEMON_NAME'
@@ -10,7 +10,8 @@ export const GET_ORDER_STRONGEST = 'GET_ORDER_STRONGEST'
 export const GET_FILTER_API = 'GET_FILTER_API'
 export const GET_FILTER_DB = 'GET_FILTER_DB'
 export const GET_FILTER_TYPE = 'GET_FILTER_TYPE'
-//export const GET_TYPES = 'GET_TYPES'
+export const GET_TYPES = 'GET_TYPES'
+export const SET_LOADING = 'SET_LOADING'
 
 export function getPokemons() {
     return async function (dispatch) {
@@ -125,9 +126,9 @@ export function getFilterDB() {
 
 
 
-/* export function getTypes() {
+export function getTypes() {
     return async function(dispatch) {
-        return await axios.get(`${TYPES_URL}`)
+        return await axios.get(`${TYPE_URL}`)
         .then((types)=>{
             dispatch({
                 type: 'GET_TYPES',
@@ -135,11 +136,17 @@ export function getFilterDB() {
             })
         })
     }
-} */
+}
 
 export function getFilterType(selectedType) {
     return {
         type: 'GET_FILTER_TYPE',
         payload: selectedType
+    }
+}
+
+export function setLoading () {
+    return {
+        type: 'SET_LOADING'
     }
 }

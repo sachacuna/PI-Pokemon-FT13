@@ -32,9 +32,9 @@ typeCtrl.getTypes = async (req, res, next) => {
     try {
         const result = await Type.findAll()
         const typeMap = result.map((e)=>{
-            return e.name
+            return {name: e.name}
         })
-        return res.json(typesMap)
+        return res.json(typeMap)
     }
     catch (error) {
         next(res.status(404).json({message: 'Type not found!'}))
