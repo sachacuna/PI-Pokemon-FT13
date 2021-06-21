@@ -5,6 +5,11 @@
     padding-right:30px;
     color: rgb(235, 60, 60);
 }
+#navList h1{
+    font-size: 48px;
+    color:#DE4224 ;
+    text-decoration: none
+}
 #navList {
     display: flex;
     align-items: center;
@@ -16,7 +21,7 @@
 }
 #navBack {
     background-color: rgb(255, 225, 127);
-    padding-left: 170px;
+    padding-left: 94px;
 } 
 
 #CreateButton {

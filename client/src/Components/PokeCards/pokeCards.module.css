@@ -9,7 +9,13 @@
 }
 
 
-
+.Message {
+	display:flex;
+    justify-content: center;
+    align-items: center;
+	color: rgb(39, 39, 39);
+	width: 1200px;
+}
 
 .Cards {
 	display: grid;

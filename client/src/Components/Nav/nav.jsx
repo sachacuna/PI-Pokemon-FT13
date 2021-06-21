@@ -13,7 +13,9 @@ export default function Nav() {
                     </Link>
                 </li>
                 <li>
-                    <h1>PokéProject</h1>
+                    <Link to='/home' style={{ textDecoration: 'none' }}>
+                        <h1>PokéProject</h1>
+                    </Link>
                 </li>
                 <li>
                     <Search />
