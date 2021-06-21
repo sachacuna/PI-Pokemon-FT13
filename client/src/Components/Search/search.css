@@ -1,0 +1,22 @@
+#SearchButton input {
+    border: none;
+    border-radius: 3px;
+    padding: 10px 12px;
+    color: #DE4224 ;
+    background-color:rgb(252, 252, 252) ;
+
+
+}
+#SearchButton button {
+    display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+    margin: 5px;
+};

@@ -14,32 +14,15 @@ function PokeDetail({ match }) {
 
     useEffect(() => {
         dispatch(getPokemonId(id))
-    }, [])
+    }, [id])
 
     const pokemons = useSelector((state) => state.pokemonDetail)
+    
+    if (typeof pokemons.id==='string') {
+        return (<h4>el id es un string</h4>)
+    } else {
     return (
-        <div><div id='navBack'>
-            <ul id="navList">
-                <li>
-                    <img src="https://cdn.theorg.com/d3119e0e-8202-4034-85ce-d0356382515e_thumb.jpg" alt='Henry Logo' height='55px' width='55px' />
-                </li>
-                <li>
-                    <a href="http://localhost:3000/home">Go Back</a>
-                </li>
-                <li>
-                    FILTERS LOCO, LOS FILTERS
-                </li>
-                <li>
-                    <FaSortAlphaDown />
-                </li>
-                <li>
-                    <FaSortAlphaDownAlt />
-                </li>
-                <li>
-                    <input placeholder="Insert Pokename here!" />
-                </li>
-            </ul>
-        </div>
+        <div>
             <div id='cardDetail'>
                 <CardDetail
                     name={pokemons.name}
@@ -55,7 +38,7 @@ function PokeDetail({ match }) {
                 />
             </div>
         </div>
-    )
+    )}
 }
 
 export default PokeDetail

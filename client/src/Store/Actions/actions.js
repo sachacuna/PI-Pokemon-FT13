@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { POKE_URL , NAME_URL, ID_URL} from '../../Constants/constants'
+import { POKE_URL, NAME_URL, ID_URL } from '../../Constants/constants'
 export const GET_POKEMONS = 'GET_POKEMONS'
 export const GET_POKEMON_ID = 'GET_POKEMON_ID'
 export const GET_POKEMON_NAME = 'GET_POKEMON_NAME'
@@ -10,144 +10,136 @@ export const GET_ORDER_STRONGEST = 'GET_ORDER_STRONGEST'
 export const GET_FILTER_API = 'GET_FILTER_API'
 export const GET_FILTER_DB = 'GET_FILTER_DB'
 export const GET_FILTER_TYPE = 'GET_FILTER_TYPE'
- 
+//export const GET_TYPES = 'GET_TYPES'
+
 export function getPokemons() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            dispatch({
-                type: 'GET_POKEMONS',
-                payload: pokemons.data
+            .then((pokemons) => {
+                dispatch({
+                    type: 'GET_POKEMONS',
+                    payload: pokemons.data
+                })
             })
-        })
     }
 }
- 
+
 export function getPokemonId(id) {
-    return async function(dispatch) {
-        return await axios.get(`${ID_URL}${id}`)
-        .then((pokemons)=>{
-            dispatch({
-                type: 'GET_POKEMON_ID',
-                payload: pokemons.data
+    return async function (dispatch) {
+        return await axios.get('http://localhost:3001/pokemons/' + id)
+            .then((pokemons) => {
+                dispatch({
+                    type: 'GET_POKEMON_ID',
+                    payload: pokemons.data
+                })
             })
-        })
     }
 }
 
 export function getPokemonName(name) {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${NAME_URL}${name}`)
-        .then((pokemons)=>{
-            dispatch({
-                type: 'GET_POKEMON_NAME',
-                payload: pokemons.data
+            .then((pokemons) => {
+                dispatch({
+                    type: 'GET_POKEMON_NAME',
+                    payload: pokemons.data
+                })
             })
-        })
     }
 }
 
 export function getOrderAsc() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            pokemons.data.sort((a,b)=>{
-                if(a.name>b.name) return 1
-                if(a.name<b.name) return -1
-                return 0
+            .then((pokemons) => {
+                pokemons.data.sort((a, b) => {
+                    if (a.name > b.name) return 1
+                    if (a.name < b.name) return -1
+                    return 0
+                })
+                dispatch({
+                    type: 'GET_ORDER_ASC',
+                    payload: pokemons.data
+                })
             })
-            dispatch({
-                type: 'GET_ORDER_ASC',
-                payload: pokemons.data
-            })
-        })
     }
 }
 
 export function getOrderDesc() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            pokemons.data.sort((b,a)=>{
-                if(a.name>b.name) return 1
-                if(a.name<b.name) return -1
-                return 0
+            .then((pokemons) => {
+                pokemons.data.sort((b, a) => {
+                    if (a.name > b.name) return 1
+                    if (a.name < b.name) return -1
+                    return 0
+                })
+                dispatch({
+                    type: 'GET_ORDER_DESC',
+                    payload: pokemons.data
+                })
             })
-            dispatch({
-                type: 'GET_ORDER_DESC',
-                payload: pokemons.data
-            })
-        })
     }
 }
 export function getOrderWeakest() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            pokemons.data.sort((a,b)=>{
-                if(a.hp>b.hp) return 1
-                if(a.hp<b.hp) return -1
-                return 0
+            .then((pokemons) => {
+                pokemons.data.sort((a, b) => {
+                    if (a.hp > b.hp) return 1
+                    if (a.hp < b.hp) return -1
+                    return 0
+                })
+                dispatch({
+                    type: 'GET_ORDER_WEAKEST',
+                    payload: pokemons.data
+                })
             })
-            dispatch({
-                type: 'GET_ORDER_WEAKEST',
-                payload: pokemons.data
-            })
-        })
     }
 }
 
 export function getOrderStrongest() {
-    return async function(dispatch) {
+    return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            pokemons.data.sort((b,a)=>{
-                if(a.hp>b.hp) return 1
-                if(a.hp<b.hp) return -1
-                return 0
+            .then((pokemons) => {
+                pokemons.data.sort((b, a) => {
+                    if (a.hp > b.hp) return 1
+                    if (a.hp < b.hp) return -1
+                    return 0
+                })
+                dispatch({
+                    type: 'GET_ORDER_STRONGEST',
+                    payload: pokemons.data
+                })
             })
-            dispatch({
-                type: 'GET_ORDER_STRONGEST',
-                payload: pokemons.data
-            })
-        })
     }
 }
 
 export function getFilterAPI() {
-    return async function(dispatch) {
-        return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            pokemons.data.filter()
-            dispatch({
-                type: 'GET_FILTER_API',
-                payload: pokemons.data
-            })
-        })
-    }
+    return { type: 'GET_FILTER_API' }
 }
 
 export function getFilterDB() {
+    return { type: 'GET_FILTER_DB' }
+}
+
+
+
+/* export function getTypes() {
     return async function(dispatch) {
-        return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
+        return await axios.get(`${TYPES_URL}`)
+        .then((types)=>{
             dispatch({
-                type: 'GET_FILTER_DB',
-                payload: pokemons.data
+                type: 'GET_TYPES',
+                payload: types.data,
             })
         })
     }
-}
+} */
 
 export function getFilterType(selectedType) {
-    return async function(dispatch) {
-        return await axios.get(`${POKE_URL}`)
-        .then((pokemons)=>{
-            dispatch({
-                type: 'GET_FILTER_TYPE',
-                payload: pokemons.data,
-               // PokeType: selectedType
-            })
-        })
+    return {
+        type: 'GET_FILTER_TYPE',
+        payload: selectedType
     }
 }

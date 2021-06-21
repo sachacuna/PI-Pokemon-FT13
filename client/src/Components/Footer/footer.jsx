@@ -9,12 +9,12 @@ const Footer = () => {
             <ul id='footerUl' >
                 <li>
                 <a href={"https://github.com/sachacuna"}>
-                    <SiGithub id='logoGit'/>
+                    <SiGithub  id='logoGit'/>
                 </a>
                 </li>
                 <li>
                 <a href={"https://www.linkedin.com/in/sacha-emmanuel-cuna"}>
-                    <SiLinkedin id='logoLin' />
+                    <SiLinkedin  id='logoLin'  />
                 </a>
                 </li>
                 <h4>Made by Sacha Cuña - Henry Project</h4>

@@ -52,22 +52,22 @@ const reducers = (state = initialState, action) => {
                 ...state,
                 pokemons: action.payload,
             }
-        // case GET_FILTER_API:
-        //     return {
-        //         ...state,
-        //         filter: state.pokemons.filter(p=>p.id<900).sort(),
-        //     }
-        // case GET_FILTER_DB:
-        //     return {
-        //         ...state,
-        //         filter: state.pokemons.filter(p=>p.id.length>3).sort(),
-        //     }
-        // GET_FILTER_TYPE:
-        //     return {
-        //         ...state,
-        //         filter: state.pokemons.filter(p=>p.type===selectedType)
-        //     }
-
+        case GET_FILTER_DB:
+            return {
+                ...state,
+                pokemons: state.pokemons.filter(p => typeof p.id === 'string')
+            }
+        case GET_FILTER_API:
+            return {
+                ...state,
+                pokemons: state.pokemons.filter(p => typeof p.id === 'number')
+            }
+        /* case GET_FILTER_TYPE:
+            return {
+                ...state,
+                types: state.types.filter(p=>p.type===selectedType)
+            }
+ */
         default:
             return { ...state }
     }

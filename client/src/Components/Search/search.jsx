@@ -1,4 +1,5 @@
 import React /* ,{ useState, useEffect } */from 'react'
+import '../Search/search.css'
 // import { getPokemonName } from '../../Store/Actions/actions'
 // import { Link } from 'react-router-dom'
 // import {useSelector, useDispatch} from 'react-redux'
@@ -21,7 +22,7 @@ export default function Search() {
     // const pokemonNameSearch = useSelector(state => state.pokemonNameSearch)
 
     return (
-        <div>
+        <div id="SearchButton">
         {/* <form onSubmit={(e)=>handleSubmit(e)}>
             <div>
                 <input 
@@ -36,8 +37,8 @@ export default function Search() {
                 </Link>
             </form>
         </form> */}
-            <input type='text' placeholder='Insert name'/>
-            <button>Search</button>
+            <input type='text' placeholder='INSERT POKÉMON NAME'/>
+            <button id="SearchButton">Search</button>
         </div>
     )
 }

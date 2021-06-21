@@ -1,0 +1,34 @@
+#navList li {
+    display:inline;
+    justify-content: center;
+    padding-left:30px;
+    padding-right:30px;
+    color: rgb(235, 60, 60);
+}
+#navList {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 1%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 0%;
+}
+#navBack {
+    background-color: rgb(255, 225, 127);
+    padding-left: 170px;
+} 
+
+#CreateButton {
+    display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+    margin: 5px;
+};

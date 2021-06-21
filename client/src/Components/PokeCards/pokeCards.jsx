@@ -44,7 +44,7 @@ function PokeCards() {
               id={poke.id}
               name={poke.name.toUpperCase()}
               sprite={poke.sprite}
-              types={poke.types.map(e => `${e} `)}
+              types={poke.types?.map(e => `${e} `)}
             />
           )
         }).slice(currentPage, currentPage + pokePerPage)

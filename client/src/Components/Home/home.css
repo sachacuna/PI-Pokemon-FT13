@@ -1,27 +1,4 @@
-#navList li {
-    display:inline;
-    align-items: center;
-    padding-left:30px;
-    padding-right:30px;
-    color: rgb(235, 60, 60);
-}
-#navList  {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    padding: 1%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-top: 0%;
-}
-#navBack {
-    background-color: rgb(255, 225, 127);
-    text-align: center;
-    margin: 0px;
-} 
-
 #bigDiv {
-    background-image: url('https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png');
     background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
     background-repeat: no-repeat;
     width: 100%;

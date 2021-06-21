@@ -1,6 +1,15 @@
 import React from 'react'
-import {getOrderAsc, getOrderDesc, getOrderWeakest, getOrderStrongest} from '../../Store/Actions/actions'
-import {useSelector, useDispatch} from 'react-redux'
+import {
+    getOrderAsc,
+    getOrderDesc,
+    getOrderWeakest,
+    getOrderStrongest,
+    getFilterAPI,
+    getFilterDB,
+    getFilterType,
+    getPokemons
+} from '../../Store/Actions/actions'
+import { useSelector, useDispatch } from 'react-redux'
 import '../Order/order.css'
 
 
@@ -11,7 +20,7 @@ export default function Order() {
         e.preventDefault()
         dispatch(getOrderAsc())
     }
-    
+
     function orderDesc(e) {
         e.preventDefault()
         dispatch(getOrderDesc())
@@ -20,38 +29,51 @@ export default function Order() {
         e.preventDefault()
         dispatch(getOrderWeakest())
     }
-    
-    function orderStrongest(e) { 
+
+    function orderStrongest(e) {
         e.preventDefault()
         dispatch(getOrderStrongest())
     }
 
-    const pokemons = useSelector((state)=>state.pokemons)
+    function filterAll(e) {
+        e.preventDefault()
+        dispatch(getPokemons())
+    }
+    function filterApi(e) {
+        e.preventDefault()
+        dispatch(getFilterAPI())
+    }
+    function filterDb(e) {
+        e.preventDefault()
+        dispatch(getFilterDB())
+    }
+
+    const pokemons = useSelector((state) => state.pokemons)
 
     return (
         <div id="Buttons">
             <h4>Order By:</h4>
             <form>
-                <button onClick={(e)=>orderAsc(e)}>A - Z</button>
+                <button onClick={(e) => orderAsc(e)}>A - Z</button>
             </form>
             <form>
-                <button onClick={(e)=>orderDesc(e)}>Z - A</button>
+                <button onClick={(e) => orderDesc(e)}>Z - A</button>
             </form>
             <form>
-                <button onClick={(e)=>orderWeakest(e)}>Weakness</button>
+                <button onClick={(e) => orderWeakest(e)}>Weakness</button>
             </form>
             <form>
-                <button onClick={(e)=>orderStrongest(e)}>Strength</button>
+                <button onClick={(e) => orderStrongest(e)}>Strength</button>
             </form>
             <h4>Filter By:</h4>
             <form>
-                <button onClick={(e)=>(e)}>All</button>
+                <button onClick={(e) => filterAll(e)}>All</button>
             </form>
             <form>
-                <button onClick={(e)=>(e)}>Originals</button>
+                <button onClick={(e) => filterApi(e)}>Originals</button>
             </form>
             <form>
-                <button onClick={(e)=>(e)}>User-Made</button>
+                <button onClick={(e) => filterDb(e)}>User-Made</button>
             </form>
             <h4>Choose a Type:</h4>
             <select>
