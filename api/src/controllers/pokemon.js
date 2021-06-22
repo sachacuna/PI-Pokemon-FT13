@@ -103,6 +103,7 @@ pokeCtrl.createPokemon = async (req, res, next) => {
         const body = req.body
         const newPoke = { ...body, id: uuidv4() }
         await Pokemon.create(newPoke)
+        //faltaria agregar prop por prop
         res.status(201).json(newPoke)
     }
     catch (error) {
