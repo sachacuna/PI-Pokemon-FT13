@@ -1,44 +1,39 @@
-import React /* ,{ useState, useEffect } */from 'react'
+import React,{ useState, useEffect } from 'react'
 import '../Search/search.css'
-// import { getPokemonName } from '../../Store/Actions/actions'
-// import { Link } from 'react-router-dom'
-// import {useSelector, useDispatch} from 'react-redux'
+import { getPokemonName } from '../../Store/Actions/actions'
+//REVISAR ESTA ACTION
 
 
-export default function Search() {
-    // const [name, setName] = useState('')
+export default function Search(getPokemonName) {
+    const [name, setName] = useState('')
 
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     setName('')
-    // }
+    function handleChange(e) {
+        setName(e.target.value)
+    }
 
-    // const dispatch = useDispatch()
+    function handleSubmit(e) {
+        e.preventDefault()
+        if (name.length) {
+            getPokemonName(name)
+        }
 
-    // useEffect(() => {
-    //     dispatch(getPokemonName(name))
-    // }, [name])
-
-    // const pokemonNameSearch = useSelector(state => state.pokemonNameSearch)
+    }
 
     return (
         <div id="SearchButton">
-        {/* <form onSubmit={(e)=>handleSubmit(e)}>
-            <div>
-                <input 
-                placeholder='Insert Pokenmon name'
-                value={name}
-                onChange={(e)=>setName(e.target.value)}
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <input
+                    type='text'
+                    onChange={(e)=>handleChange(e)}
+                    placeholder='INSERT POKÉMON NAME'
+                    
                 />
-            </div>
-            <form onSubmit={(e)=>handleSubmit(e)}> 
-                <Link to={`/pokemon/${name}`}>
-                    <input type='submit' value='SEARCH'/>
-                </Link>
+                <button
+                    id="SearchButton"
+                    type='submit'>
+                    Search
+                </button>
             </form>
-        </form> */}
-            <input type='text' placeholder='INSERT POKÉMON NAME'/>
-            <button id="SearchButton">Search</button>
         </div>
     )
 }

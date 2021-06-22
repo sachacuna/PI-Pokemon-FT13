@@ -2,3 +2,15 @@
     display: flex;
     flex-direction: column;
 }
+
+#ContentDiv {
+    background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    margin-top: -1.48%;
+}
+
+#bigDiv {
+    margin-top: -0.75%;
+}
