@@ -40,7 +40,7 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
 }
 
 pokeCtrl.getPokemons = async (req, res, next) => {
-    let { name } = req.query //ó let name = req.query.name
+    const { name } = req.query //ó let name = req.query.name
     const pokeDb = await Pokemon.findAll({include: [Type] })
     const pokeApi = await axios(`${POKE_URL}/?limit=40&offset=0`) 
 
@@ -102,7 +102,7 @@ pokeCtrl.createPokemon = async (req, res, next) => {
     try {
         //ver como hacer para que no deje crear 5 pokes con el mismo name
         const body = req.body
-        const newPoke = { ...body, id: uuidv4(), sprite: "http://static.pulzo.com/images/20161024120029/captura66-914x607.jpg" }
+        const newPoke = { ...body, id: uuidv4(), sprite: "https://i.pinimg.com/originals/43/e5/87/43e5879e3357ee51e080eda20d99bbde.png" }
 
         const pokeCreated = await Pokemon.create(newPoke) 
         //console.log("aca esta el create", newPoke)
