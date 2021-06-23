@@ -51,7 +51,7 @@ function PokeCards() {
             <Card
               key={poke.id}
               id={poke.id}
-              name={poke.name.toUpperCase()}
+              name={poke.name?.toUpperCase()}
               sprite={poke.sprite}
               types={poke.types?.map(e => `${e} `)} />
           </div>

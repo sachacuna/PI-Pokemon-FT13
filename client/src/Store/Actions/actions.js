@@ -41,9 +41,10 @@ export function getPokemonName(name) {
     return async function (dispatch) {
         return await axios.get(`${NAME_URL}`+name)
             .then((pokemons) => {
+                console.log(pokemons.data)
                 dispatch({
                     type: 'GET_POKEMON_NAME',
-                    payload: pokemons.data
+                    payload: pokemons.data//[pokemons.data]
                 })
             })
     }

@@ -35,7 +35,8 @@ const reducers = (state = initialState, action) => {
                 pokemonDetail: action.payload,
             }
         case GET_POKEMON_NAME:
-            return {
+        //console.log('reducer aca',action.payload)    
+        return {
                 ...state,
                 pokemons: action.payload,
             }
