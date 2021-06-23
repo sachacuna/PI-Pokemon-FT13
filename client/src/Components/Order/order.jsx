@@ -73,8 +73,8 @@ export default function Order() {
     function handleClick() {
         let data = []
         pokemons.forEach(poke => {
-            if (typeof poke.id === 'string') {
-                poke.types?.map(type => type === selectedType ? data.push(poke) : null)
+            if (poke.id?.length) {
+                poke.Types?.map(type => type.name === selectedType ? data.push(poke) : null)
             } else {
                 if (poke.types.includes(selectedType)) {
                     data.push(poke)
