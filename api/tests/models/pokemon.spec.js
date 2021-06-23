@@ -1,5 +1,5 @@
 const { Pokemon, conn } = require('../../src/db.js');
-const { expect } = require('chai');
+const { expect, assert, to, have, lengthOf } = require('chai');
 
 describe('Pokemon model', () => {
   before(() => conn.authenticate()
@@ -16,6 +16,9 @@ describe('Pokemon model', () => {
       });
       it('should work when its a valid name', () => {
         Pokemon.create({ name: 'Pikachu' });
+      });
+      it('should work when its a valid id', () => {
+        Pokemon.create({ id: '0a7f8355-3e9d-489c-a3a9-def816dd0dce' });
       });
     });
   });

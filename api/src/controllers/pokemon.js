@@ -1,4 +1,5 @@
 const axios = require('axios')
+const { Sequelize, Op } = require('sequelize')
 const { v4: uuidv4 } = require('uuid')
 const { Pokemon, Type } = require('../db')
 const { POKE_URL, TYPE_URL } = require('../utils/constants')
@@ -7,11 +8,11 @@ const pokeCtrl = {}
 
 pokeCtrl.getPokemonById = async (req, res, next) => {
     const { id } = req.params
-    console.log(id)
+    //console.log(id)
     try {
         if (id.length > 5) {
-            const myPokemonDbId = await Pokemon.findAll({ where: { id: id } })
-            res.json(myPokemonDbId)
+            const myPokemonDbId = await Pokemon.findAll({ where: { id: id }, include: [Type] })
+            res.status(200).json(myPokemonDbId)
         }
         else {
             const { data } = await axios(`${POKE_URL}/${id}`)
@@ -30,17 +31,17 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
                 defense: data.stats[2].base_stat,
                 speed: data.stats[5].base_stat,
             }
-            return res.json(myPokeApiId)
+            return res.status(200).json(myPokeApiId)
         }
     }
     catch (error) {
-        next(res.status(404).json({ message: 'Pokemon id not found!' }))
+        next(res.json({ message: 'Pokemon id not found!' }))
     }
 }
 
 pokeCtrl.getPokemons = async (req, res, next) => {
     let { name } = req.query //ó let name = req.query.name
-    const pokeDb = await Pokemon.findAll()
+    const pokeDb = await Pokemon.findAll({include: [Type] })
     const pokeApi = await axios(`${POKE_URL}/?limit=40&offset=0`) 
 
     if (name) {
@@ -101,10 +102,25 @@ pokeCtrl.createPokemon = async (req, res, next) => {
     try {
         //ver como hacer para que no deje crear 5 pokes con el mismo name
         const body = req.body
-        const newPoke = { ...body, id: uuidv4() }
-        await Pokemon.create(newPoke)
+        const newPoke = { ...body, id: uuidv4(), sprite: "http://static.pulzo.com/images/20161024120029/captura66-914x607.jpg" }
+
+        const pokeCreated = await Pokemon.create(newPoke) 
+        //console.log("aca esta el create", newPoke)
+        //console.log("aca esta el create", pokeCreated)
         //faltaria agregar prop por propiedad
-        res.status(201).json(newPoke)
+        const typesDB = await Type.findAll({
+            where: {
+                name: {
+                    [Sequelize.Op.in]: body.types,
+                },
+            },
+        })
+        //console.log("DB TYPES QUE OnDA",typesDB)
+        await pokeCreated.setTypes(typesDB)
+        // console.log("1AAA",newPoke)
+        // console.log("2BBBB",newPoke.types)
+        // console.log("3CCCC", newPoke.types[0])
+        res.status(200).json(pokeCreated)
     }
     catch (error) {
         next(res.status(404).json({ message: 'Pokemon not created!' }))
