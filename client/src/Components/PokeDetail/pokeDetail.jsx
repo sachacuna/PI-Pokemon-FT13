@@ -1,11 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { getPokemonId } from '../../Store/Actions/actions'
 import CardDetail from '../CardDetails/cardDetails'
 import '../Home/home.css'
-import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
+//import { FaSortAlphaDown, FaSortAlphaDownAlt } from "react-icons/fa";
 
 
 function PokeDetail({ match }) {
@@ -19,8 +19,8 @@ function PokeDetail({ match }) {
     const pokemons = useSelector((state) => state.pokemonDetail)
 
     if (typeof pokemons.id !== 'number') {
-        console.log('que hay en pokemons', pokemons)
-        console.log('entre al if')
+        //console.log('que hay en pokemons', pokemons)
+        //console.log('entre al if')
         return (<div>
             <div id='cardDetail'>
                 <CardDetail
@@ -38,7 +38,7 @@ function PokeDetail({ match }) {
             </div>
         </div>)
     } else {
-        console.log('entre al ELSE')
+        //console.log('entre al ELSE')
         return (
             <div>
                 <div id='cardDetail'>

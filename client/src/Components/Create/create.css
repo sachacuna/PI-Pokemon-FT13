@@ -1,6 +1,20 @@
 .forms {
     display: flex;
     flex-direction: column;
+    color: #fff5f5;
+    font-size: 16px;
+	font-weight: 600;
+
+}
+
+.forms input {
+    border: none;
+    border-radius: 3px;
+    background-color:rgb(252, 252, 252) ;
+    padding: 6px 7px;
+    font-size: 13px;
+    color: #DE4224;
+    font-weight: 600;
 }
 
 #ContentDiv {
@@ -9,7 +23,7 @@
     width: 100%; 
     height: 100%;
     margin-top: -1.48%;
-}
+} 
 
 #bigDiv {
     margin-top: -0.75%;

@@ -36,6 +36,7 @@ const reducers = (state = initialState, action) => {
             }
         case GET_POKEMON_NAME:
             return {
+                ...state,
                 pokemons: action.payload,
             }
         case GET_ORDER_ASC:

@@ -23,6 +23,7 @@ export default function Order() {
 
     const [selectedType, setSelectedType] = useState('')
     const [filterType, setFilterType] = useState([])
+    const [filterTypeDB, setFilterTypeDB] = useState([])
 
     const pokemons = useSelector(state => state.pokemons)
     const types = useSelector(state => state.types)

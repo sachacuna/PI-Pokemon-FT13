@@ -45,7 +45,7 @@ function Create() {
     	} else {
     		setInput((input) => ({ ...input, types: [...input.types,(e.target.value)] }));
     	}
-    }
+    } 
     function handleSubmit(e) {
         e.preventDefault()
         //casos errors en if
@@ -90,20 +90,20 @@ function Create() {
             <div id="ContentDiv">
                 <h2>CREATE Poke Form</h2>
                 <form className="forms" onSubmit={handleSubmit}>
-                    <label>Name:</label>
-                    <input name="name" type='text' placeholder='INSERT POKÉMON NAME' autoComplete="off" onChange={handleInput} required='required' value={input.name} />
-                    <label>Height:</label>
-                    <input name="height" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.height} />
-                    <label>Weight:</label>
-                    <input name="weight" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.weight} />
-                    <label>HP:</label>
-                    <input name="hp" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.hp} />
-                    <label>Attack:</label>
-                    <input name="attack" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.attack} />
-                    <label>Defense:</label>
-                    <input name="defense" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.defense} />
-                    <label>Speed:</label>
-                    <input name="speed" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.speed} />
+                    <label>Name</label>
+                    <input id="inputData" name="name" type='text' placeholder='INSERT POKÉMON NAME' autoComplete="off" onChange={handleInput} required='required' value={input.name} />
+                    <label>Height</label>
+                    <input id="inputData" name="height" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.height} />
+                    <label>Weight</label>
+                    <input id="inputData" name="weight" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.weight} />
+                    <label>HP</label>
+                    <input id="inputData" name="hp" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.hp} />
+                    <label>Attack</label>
+                    <input id="inputData" name="attack" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.attack} />
+                    <label>Defense</label>
+                    <input id="inputData" name="defense" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.defense} />
+                    <label>Speed</label>
+                    <input id="inputData" name="speed" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.speed} />
 
                     <div>
                         <select name='types' onChange={(e) => handleSelect(e)} required value={input.types}  id="buttonOrange">

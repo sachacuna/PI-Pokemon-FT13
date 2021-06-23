@@ -1,38 +1,43 @@
-import React,{ useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import '../Search/search.css'
 import { getPokemonName } from '../../Store/Actions/actions'
 //REVISAR ESTA ACTION
+import { Link } from 'react-router-dom'
 
 
-export default function Search(getPokemonName) {
-    const [name, setName] = useState('')
-
-    function handleChange(e) {
-        setName(e.target.value)
-    }
+export default function Search() {
+    const [input, setInput] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
-        if (name.length) {
-            getPokemonName(name)
-        }
-
+        dispatch(getPokemonName(input))
     }
+
+    function handleChange(s) {
+        setInput(s)
+    }
+
+    const dispatch = useDispatch()
 
     return (
         <div id="SearchButton">
             <form onSubmit={(e) => handleSubmit(e)}>
-                <input
-                    type='text'
-                    onChange={(e)=>handleChange(e)}
-                    placeholder='INSERT POKÉMON NAME'
-                    
-                />
+                <div>
+                    <input
+                        type='text'
+                        onChange={(e) => handleChange(e.target.value)}
+                        placeholder='INSERT POKÉMON NAME'
+
+                    />
+                </div>
+
                 <button
                     id="SearchButton"
                     type='submit'>
                     Search
                 </button>
+
             </form>
         </div>
     )

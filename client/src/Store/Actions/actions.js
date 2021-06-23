@@ -39,7 +39,7 @@ export function getPokemonId(id) {
 
 export function getPokemonName(name) {
     return async function (dispatch) {
-        return await axios.get(`${NAME_URL}${name}`)
+        return await axios.get(`${NAME_URL}`+name)
             .then((pokemons) => {
                 dispatch({
                     type: 'GET_POKEMON_NAME',
