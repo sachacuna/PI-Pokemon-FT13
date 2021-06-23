@@ -46,7 +46,7 @@ pokeCtrl.getPokemons = async (req, res, next) => {
 
     if (name) {
         try {
-            const pokeDbName = await Pokemon.findAll({ where: { name: name } })
+            const pokeDbName = await Pokemon.findAll({ where: { name: name },include: [Type] })
             if (pokeDbName.length !== 0) {
                 return res.json(pokeDbName)
             } else {
@@ -61,7 +61,7 @@ pokeCtrl.getPokemons = async (req, res, next) => {
                         return e.type.name
                     })
                 }
-                return res.json(myPokeApiName)
+                return res.json([myPokeApiName])
             }
         }
         catch (error) {
@@ -97,6 +97,39 @@ pokeCtrl.getPokemons = async (req, res, next) => {
     }
 }
 
+// pokeCtrl.getPokemons = async (req, res, next) => {
+//     const { name } = req.query
+//     if (!name) {
+//         const dataBase = await Pokemon.findAll({ include: [Type] })
+//         const api = await axios(`${POKE_URL}/?limit=40&offset=0`)
+//         const modelApi = {
+//             id: api.data.id,
+//             name: api.data.name,
+//             sprite: api.data.sprites.other.dream_world.front_default,
+//             types: api.data.types.map((e) => {
+//                 return e.type.name
+//             })
+//         }
+//         Promise.all([dataBase, modelApi])
+//             .then(results => {
+//                 const [dataDB, dataApi] = results
+//                 const response = dataDB.concat(dataApi)
+//                 res.send(response)
+//             })
+//             .catch(error => next(error))
+//     } else {
+//         const dataBase = await Pokemon.findAll({ where: { name: name }, include: [Type] })
+//         const api = await axios(`${POKE_URL}/${name}`)
+//         Promise.all([dataBase, modelApi])
+//             .then(results => {
+//                 const [dataDB, dataApi] = results
+//                 const response = dataDB.concat(dataApi)
+//                 res.send(response)
+//             })
+//             .catch(error => next(error))
+//     }
+// }
+
 
 pokeCtrl.createPokemon = async (req, res, next) => {
     try {
@@ -104,7 +137,7 @@ pokeCtrl.createPokemon = async (req, res, next) => {
         const body = req.body
         const newPoke = { ...body, id: uuidv4(), sprite: "https://i.pinimg.com/originals/43/e5/87/43e5879e3357ee51e080eda20d99bbde.png" }
 
-        const pokeCreated = await Pokemon.create(newPoke) 
+        const pokeCreated = await Pokemon.create(newPoke)
         //console.log("aca esta el create", newPoke)
         //console.log("aca esta el create", pokeCreated)
         //faltaria agregar prop por propiedad
