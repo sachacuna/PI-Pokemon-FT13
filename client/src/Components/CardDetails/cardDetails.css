@@ -26,6 +26,34 @@
     align-items: center;
 }
 
-#buttonsDiv form{
+#buttonsDiv form {
     margin: 2px
+} 
+
+#navButton {
+    display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+    margin: 5px
+}
+#navButtonDb{
+    display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+    margin: 5px;
+    margin-left: 65px;
 }

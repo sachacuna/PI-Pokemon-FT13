@@ -23,7 +23,7 @@ export default function Nav() {
                 <li>
                     <Link to='/create' style={{ textDecoration: 'none' }}>
                         <button id="CreateButton">
-                            PokeLab!
+                            PokeLab
                         </button>
                     </Link>
                 </li>

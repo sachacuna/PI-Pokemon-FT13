@@ -6,7 +6,7 @@
 #ContentDiv {
     background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
     background-repeat: no-repeat;
-    width: 100%;
+    width: 100%; 
     height: 100%;
     margin-top: -1.48%;
 }
@@ -14,3 +14,45 @@
 #bigDiv {
     margin-top: -0.75%;
 }
+
+#typeP {
+    background-color: rgb(247, 247, 128);
+    color: rgb(211, 63, 63);
+    border: none;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 90px;
+	font-weight: 600;
+    font-size: 15px;
+    padding: 5px 6px;
+}
+
+#buttonX {
+    background-color: rgb(211, 63, 63);
+    color: rgb(247, 247, 128);
+    border: none;
+    border-radius: 3px;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+	font-weight: 400;
+}
+#buttonOrange{
+    display:inline;
+	justify-content: center;
+	background-color: #DE4224 ;
+	border: none;
+	color: white;
+	padding: 10px 12px;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: 600;
+	border-radius: 3px;
+    margin: 5px
+}
+
