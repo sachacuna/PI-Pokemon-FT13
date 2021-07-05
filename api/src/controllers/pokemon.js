@@ -133,7 +133,7 @@ pokeCtrl.getPokemons = async (req, res, next) => {
 
 pokeCtrl.createPokemon = async (req, res, next) => {
     try {
-        //ver como hacer para que no deje crear 5 pokes con el mismo name
+        //info del form
         const body = req.body
         const newPoke = { ...body, id: uuidv4(), sprite: "https://i.pinimg.com/originals/43/e5/87/43e5879e3357ee51e080eda20d99bbde.png" }
 
