@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { POKE_URL, NAME_URL, TYPE_URL, ID_URL } from '../../Constants/constants'
+import { bindActionCreators } from 'redux'
+import { POKE_URL, NAME_URL, TYPE_URL } from '../../Constants/constants' // ID_URL
 export const GET_POKEMONS = 'GET_POKEMONS'
 export const GET_POKEMON_ID = 'GET_POKEMON_ID'
 export const GET_POKEMON_NAME = 'GET_POKEMON_NAME'
@@ -12,6 +13,7 @@ export const GET_FILTER_DB = 'GET_FILTER_DB'
 export const GET_FILTER_TYPE = 'GET_FILTER_TYPE'
 export const GET_TYPES = 'GET_TYPES'
 export const SET_LOADING = 'SET_LOADING'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 
 export function getPokemons() {
     return async function (dispatch) {
@@ -41,7 +43,7 @@ export function getPokemonName(name) {
     return async function (dispatch) {
         return await axios.get(`${NAME_URL}`+name)
             .then((pokemons) => {
-                console.log(pokemons.data)
+                //console.log(pokemons.data)
                 dispatch({
                     type: 'GET_POKEMON_NAME',
                     payload: pokemons.data//[pokemons.data]
@@ -87,6 +89,7 @@ export function getOrderWeakest() {
     return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
             .then((pokemons) => {
+                //console.log(pokemons.data)
                 pokemons.data.sort((a, b) => {
                     if (a.hp > b.hp) return 1
                     if (a.hp < b.hp) return -1
@@ -149,5 +152,11 @@ export function getFilterType(selectedType) {
 export function setLoading () {
     return {
         type: 'SET_LOADING'
+    }
+}
+export function setCurrentPage (number) {
+    return {
+        type: 'SET_CURRENT_PAGE',
+        payload: number
     }
 }

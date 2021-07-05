@@ -7,11 +7,62 @@ import Nav from '../Nav/nav'
 import { getTypes } from '../../Store/Actions/actions' //unica action a usar
 import axios from 'axios'
 
-//INSERT VALIDATES HERE
+//validates
+function validate(input) {
+    let errors = {}
+    if(!input.name) {
+        errors.name = 'Please insert a name' 
+    } else {
+        errors.name = ''
+    }if (!input.weight) {
+		errors.weight = 'Please insert a weight';
+	} else if (!/^[0-9]+$/g.test(input.weight)) {
+		errors.weight = "Weight must be a number";
+	} else {
+		errors.weight = '';
+	}
+	if (!input.height) {
+		errors.height = 'Please insert a height';
+	} else if (!/^[0-9]+$/g.test(input.height)) {
+		errors.height = "Height must be a number";
+	} else {
+		errors.height = '';
+	}
+	if (!input.hp) {
+		errors.hp = 'Please insert the HP value';
+	} else if (!/^[0-9]+$/g.test(input.hp)) {
+		errors.hp = "HP must be a number,";
+	} else {
+		errors.hp = '';
+	}
+	if (!input.attack) {
+		errors.attack = 'Please insert the Attack value';
+	} else if (!/^[0-9]+$/g.test(input.attack)) {
+		errors.attack = "Attack must be a number,";
+	} else {
+		errors.attack = '';
+	}
+	if (!input.defense) {
+		errors.defense = 'Please insert the Defense value';
+	} else if (!/^[0-9]+$/g.test(input.defense)) {
+		errors.defense = "Defense must be a number,";
+	} else {
+		errors.defense = '';
+	}
+	if (!input.speed) {
+		errors.speed = 'Please insert the Speed value';
+	} else if (!/^[0-9]+$/g.test(input.speed)) {
+		errors.speed = "speed must be a number,";
+	} else {
+		errors.speed = '';
+	}
+	return errors;
+
+}
 
 
 function Create() {
-    //const [errors, setErrors] = useState({}) //para el validate
+    const [errors, setErrors] = useState({}) //validate
     const [input, setInput] = useState({
         name: '',
         attack: 0,
@@ -20,7 +71,7 @@ function Create() {
         height: 0,
         weight: 0,
         hp: 0,
-        types: [] //revisar back por nombre en entidad type y controllers que usan nama instead types
+        types: [] //revisar back por nombre en entidad type y controllers que usan name instead types
     })
 
     const dispatch = useDispatch()
@@ -35,12 +86,17 @@ function Create() {
             ...input,
             [e.target.name]: e.target.value
         })
-        //aca van los setErrors
+        setErrors(
+            validate({
+                ...input,
+                [e.target.name]: e.target.value,
+            })
+        )
     }
     function handleSelect(e) {
     	if (input.types.includes(e.target.value)) { 
     		alert('You already selected this type. Try another one.');
-    	} else if (input.types.length > 2) {
+    	} else if (input.types.length > 1) {
     		alert('You can select up to 2 types.');
     	} else {
     		setInput((input) => ({ ...input, types: [...input.types,(e.target.value)] }));
@@ -71,7 +127,7 @@ function Create() {
     function deleteType(e, t) {
         setInput((prev) => ({ ...prev, types: prev.types.filter((type) => type !== (t)) }))
     }
-
+    //types names
     function getNames(arr) {
         let names = []
         types.forEach((t) => {
@@ -88,22 +144,43 @@ function Create() {
         <div id="bigDiv">
             <Nav />
             <div id="ContentDiv">
-                <h2>CREATE Poke Form</h2>
+                <h2 id='intro'>Create your new Pokémon in our Pokedex!</h2>
                 <form className="forms" onSubmit={handleSubmit}>
-                    <label>Name</label>
+                    <div>
+                    <label>Name </label>
                     <input id="inputData" name="name" type='text' placeholder='INSERT POKÉMON NAME' autoComplete="off" onChange={handleInput} required='required' value={input.name} />
-                    <label>Height</label>
+                    {errors.name && <p>{errors.name}</p>}
+                    </div>
+                    <div>
+                    <label>Height </label>
                     <input id="inputData" name="height" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.height} />
-                    <label>Weight</label>
+                    {errors.height && <p>{errors.height}</p>}
+                    </div>
+                    <div>
+                    <label>Weight </label>
                     <input id="inputData" name="weight" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.weight} />
-                    <label>HP</label>
+                    {errors.weight && <p>{errors.weight}</p>}
+                    </div>
+                    <div>
+                    <label>HP </label>
                     <input id="inputData" name="hp" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.hp} />
-                    <label>Attack</label>
+                    {errors.hp && <p>{errors.hp}</p>}
+                    </div>
+                    <div>
+                    <label>Attack </label>
                     <input id="inputData" name="attack" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.attack} />
-                    <label>Defense</label>
+                    {errors.attack && <p>{errors.attack}</p>}
+                    </div>
+                    <div>
+                    <label>Defense </label>
                     <input id="inputData" name="defense" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.defense} />
-                    <label>Speed</label>
+                    {errors.defense && <p>{errors.defense}</p>}
+                    </div>
+                    <div>
+                    <label>Speed </label>
                     <input id="inputData" name="speed" type='number' placeholder='MUST BE A NUMBER' autoComplete="off" onChange={handleInput} required='required' value={input.speed} />
+                    {errors.speed && <p>{errors.speed}</p>}
+                    </div>
 
                     <div>
                         <select name='types' onChange={(e) => handleSelect(e)} required value={input.types}  id="buttonOrange">
@@ -118,7 +195,7 @@ function Create() {
                     </div>
                     <div>
                         {input.types?.map((t) => (
-                            <p id={t} id="typeP">
+                            <p id={t} className="typeP"> 
                                 {getNames([t])}{' '}
                                 <button type='button' onClick={(e) => deleteType(e, t)} id="buttonX">
                                     x 

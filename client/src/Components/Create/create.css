@@ -7,6 +7,10 @@
 
 }
 
+.forms div {
+    margin-bottom: 5px;
+}
+
 .forms input {
     border: none;
     border-radius: 3px;
@@ -29,7 +33,7 @@
     margin-top: -0.75%;
 }
 
-#typeP {
+.typeP {
     background-color: rgb(247, 247, 128);
     color: rgb(211, 63, 63);
     border: none;
@@ -70,3 +74,8 @@
     margin: 5px
 }
 
+#intro {
+    color: white;
+	font-size: 35px;
+	font-weight: 600;
+}

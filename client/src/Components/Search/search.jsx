@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+import {  useDispatch } from 'react-redux'
 import '../Search/search.css'
 import { getPokemonName } from '../../Store/Actions/actions'
 //REVISAR ESTA ACTION
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 
 export default function Search() {

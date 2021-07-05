@@ -10,16 +10,19 @@ import {
     GET_FILTER_DB,
     GET_FILTER_TYPE,
     GET_TYPES,
-    SET_LOADING
+    SET_LOADING,
+    SET_CURRENT_PAGE
 } from '../Actions/actions'
 
 const initialState = {
     pokemons: [],
+    pokemonsAlt: [],
     pokemonDetail: {}, //porque es del detail
     pokemonName: {}, //porque es del search
     types: [],
     filtered: [],
-    loading: false
+    loading: false,
+    currentPage: 0
 }
 
 const reducers = (state = initialState, action) => {
@@ -28,7 +31,9 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 pokemons: action.payload,
-                loading: false
+                pokemonsAlt: [],
+                loading: false,
+                currentPage: 0
             }
         case GET_POKEMON_ID:
             return {
@@ -43,32 +48,34 @@ const reducers = (state = initialState, action) => {
         case GET_ORDER_ASC:
             return {
                 ...state,
-                pokemons: action.payload,
+                pokemonsAlt: action.payload,
             }
         case GET_ORDER_DESC:
             return {
                 ...state,
-                pokemons: action.payload,
+                pokemonsAlt: action.payload,
             }
         case GET_ORDER_WEAKEST:
             return {
                 ...state,
-                pokemons: action.payload,
+                pokemonsAlt: action.payload,
             }
         case GET_ORDER_STRONGEST:
             return {
                 ...state,
-                pokemons: action.payload,
+                pokemonsAlt: action.payload,
             }
         case GET_FILTER_DB:
             return {
                 ...state,
-                pokemons: state.pokemons.filter(p => typeof p.id === 'string')
+                pokemonsAlt: state.pokemons.filter(p => typeof p.id === 'string'),
+                currentPage: 0
             }
         case GET_FILTER_API:
             return {
                 ...state,
-                pokemons: state.pokemons.filter(p => typeof p.id === 'number')
+                pokemonsAlt: state.pokemons.filter(p => typeof p.id === 'number'),
+                currentPage: 0
             }
         case GET_TYPES:
             return {
@@ -84,6 +91,11 @@ const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload
             }
         default:
             return { ...state }

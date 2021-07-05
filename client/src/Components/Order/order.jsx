@@ -26,6 +26,7 @@ export default function Order() {
     //const [filterType, setFilterType] = useState([])
 
     const pokemons = useSelector(state => state.pokemons)
+    const pokemonsAlt = useSelector(state => state.pokemonsAlt)
     const types = useSelector(state => state.types)
 
     function orderAsc(e) {
@@ -120,6 +121,9 @@ export default function Order() {
                         </option>))}
                 </select>
                 <button type='submit'>Filter Type</button>
+                <form>
+                    <button type='submit' onChange={handleChangeTypes} name='types' value={''}>Reset</button>
+                </form>
             </form>
         </div>
     )
