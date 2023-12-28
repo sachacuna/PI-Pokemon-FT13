@@ -17,8 +17,8 @@ import {
 const initialState = {
     pokemons: [],
     pokemonsAlt: [],
-    pokemonDetail: {}, //porque es del detail
-    pokemonName: {}, //porque es del search
+    pokemonDetail: {}, 
+    pokemonName: {},  
     types: [],
     filtered: [],
     loading: false,
@@ -40,7 +40,6 @@ const reducers = (state = initialState, action) => {
                 pokemonDetail: action.payload,
             }
         case GET_POKEMON_NAME:
-        //console.log('reducer aca',action.payload)    
         return {
                 ...state,
                 pokemons: action.payload,
@@ -85,7 +84,7 @@ const reducers = (state = initialState, action) => {
         case GET_FILTER_TYPE:
             return {
                 ...state,
-                filtered: action.payload //por el estado especial de filtros
+                filtered: action.payload
             }
         case SET_LOADING:
             return {
