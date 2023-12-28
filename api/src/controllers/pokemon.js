@@ -8,7 +8,6 @@ const pokeCtrl = {}
 
 pokeCtrl.getPokemonById = async (req, res, next) => {
     const { id } = req.params
-    //console.log(id)
     try {
         if (id.length > 5) {
             const myPokemonDbId = await Pokemon.findAll({ where: { id: id }, include: [Type] })
@@ -19,7 +18,6 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
             const myPokeApiId = {
                 id: data.id,
                 name: data.name.toUpperCase(),
-                //sprite: data.sprites.other.dream_world.front_default,
                 weight: data.weight,
                 height: data.height,
                 sprite: data.sprites.other["official-artwork"].front_default,
@@ -40,7 +38,7 @@ pokeCtrl.getPokemonById = async (req, res, next) => {
 }
 
 pokeCtrl.getPokemons = async (req, res, next) => {
-    const { name } = req.query //ó let name = req.query.name
+    const { name } = req.query
     const pokeDb = await Pokemon.findAll({include: [Type] })
     const pokeApi = await axios(`${POKE_URL}/?limit=40&offset=0`) 
 
@@ -55,8 +53,6 @@ pokeCtrl.getPokemons = async (req, res, next) => {
                     id: data.id,
                     name: data.name,
                     sprite: data.sprites.other.dream_world.front_default,
-                    /* weight: data.weight,
-                    height: data.height, */
                     types: data.types.map((e) => {
                         return e.type.name
                     })
@@ -73,12 +69,10 @@ pokeCtrl.getPokemons = async (req, res, next) => {
         const pokeList = resultsUrl.map(async url => {
             try {
                 const { data } = await axios.get(url)
-                //console.log(data.name)
                 const myPokeURL = {
                     id: data.id,
                     name: data.name,
                     sprite: data.sprites.other.dream_world.front_default,
-                    //sprite: data.sprites.other["official-artwork"].front_default,
                     hp: data.stats[1].base_stat,
                     types: data.types.map((e) => {
                         return e.type.name
@@ -87,7 +81,6 @@ pokeCtrl.getPokemons = async (req, res, next) => {
                 return myPokeURL
             }
             catch (error) {
-                //console.log('Error con busqueda URL:', url)
                 next(error)
             }
         })
@@ -97,50 +90,12 @@ pokeCtrl.getPokemons = async (req, res, next) => {
     }
 }
 
-// pokeCtrl.getPokemons = async (req, res, next) => {
-//     const { name } = req.query
-//     if (!name) {
-//         const dataBase = await Pokemon.findAll({ include: [Type] })
-//         const api = await axios(`${POKE_URL}/?limit=40&offset=0`)
-//         const modelApi = {
-//             id: api.data.id,
-//             name: api.data.name,
-//             sprite: api.data.sprites.other.dream_world.front_default,
-//             types: api.data.types.map((e) => {
-//                 return e.type.name
-//             })
-//         }
-//         Promise.all([dataBase, modelApi])
-//             .then(results => {
-//                 const [dataDB, dataApi] = results
-//                 const response = dataDB.concat(dataApi)
-//                 res.send(response)
-//             })
-//             .catch(error => next(error))
-//     } else {
-//         const dataBase = await Pokemon.findAll({ where: { name: name }, include: [Type] })
-//         const api = await axios(`${POKE_URL}/${name}`)
-//         Promise.all([dataBase, modelApi])
-//             .then(results => {
-//                 const [dataDB, dataApi] = results
-//                 const response = dataDB.concat(dataApi)
-//                 res.send(response)
-//             })
-//             .catch(error => next(error))
-//     }
-// }
-
-
 pokeCtrl.createPokemon = async (req, res, next) => {
     try {
-        //info del form
         const body = req.body
         const newPoke = { ...body, id: uuidv4(), sprite: "https://i.pinimg.com/originals/43/e5/87/43e5879e3357ee51e080eda20d99bbde.png" }
 
         const pokeCreated = await Pokemon.create(newPoke)
-        //console.log("aca esta el create", newPoke)
-        //console.log("aca esta el create", pokeCreated)
-        //faltaria agregar prop por propiedad
         const typesDB = await Type.findAll({
             where: {
                 name: {
@@ -148,11 +103,7 @@ pokeCtrl.createPokemon = async (req, res, next) => {
                 },
             },
         })
-        //console.log("DB TYPES QUE OnDA",typesDB)
         await pokeCreated.setTypes(typesDB)
-        // console.log("1AAA",newPoke)
-        // console.log("2BBBB",newPoke.types)
-        // console.log("3CCCC", newPoke.types[0])
         res.status(200).json(pokeCreated)
     }
     catch (error) {
