@@ -1,7 +1,6 @@
 import React from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import '../Footer/footer.css'
-//import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
