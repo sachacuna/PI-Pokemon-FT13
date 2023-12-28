@@ -17,7 +17,6 @@ const apiToDb = async () => {
         for (let i = 0; i < apiTypes.length; i++) {
             await Type.findOrCreate({
                 where: {
-                    /*   id: uuidv4(), */
                     name: apiTypes[i].name
                 }
             })
