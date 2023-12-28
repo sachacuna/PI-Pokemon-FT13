@@ -1,6 +1,7 @@
-export const POKE_URL = 'http://localhost:3001/pokemons' 
-export const ID_URL = 'http://localhost:3001/pokemons/';
-export const NAME_URL = 'http://localhost:3001/pokemons/?name=';
-export const TYPE_URL = 'http://localhost:3001/types' 
+const  url = 'http://url:3001/'
+export const POKE_URL = url+'pokemons' 
+export const ID_URL = url+'pokemons/';
+export const NAME_URL = url+'pokemons/?name=';
+export const TYPE_URL = url+'types' 
 
 
