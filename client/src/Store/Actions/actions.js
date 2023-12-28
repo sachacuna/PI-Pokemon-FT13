@@ -43,7 +43,6 @@ export function getPokemonName(name) {
     return async function (dispatch) {
         return await axios.get(`${NAME_URL}`+name)
             .then((pokemons) => {
-                //console.log(pokemons.data)
                 dispatch({
                     type: 'GET_POKEMON_NAME',
                     payload: pokemons.data//[pokemons.data]
@@ -89,7 +88,6 @@ export function getOrderWeakest() {
     return async function (dispatch) {
         return await axios.get(`${POKE_URL}`)
             .then((pokemons) => {
-                //console.log(pokemons.data)
                 pokemons.data.sort((a, b) => {
                     if (a.hp > b.hp) return 1
                     if (a.hp < b.hp) return -1
