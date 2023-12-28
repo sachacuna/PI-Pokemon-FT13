@@ -7,8 +7,7 @@ import { getPokemons, setLoading, setCurrentPage } from '../../Store/Actions/act
 import style from '../PokeCards/pokeCards.module.css'
 
 function PokeCards() {
-  const dispatch = useDispatch() //disparamos la accion
-  //const [currentPage, setCurrentPage] = useState(0)
+  const dispatch = useDispatch() 
 
   useEffect(() => {
     dispatch(getPokemons())
@@ -20,8 +19,6 @@ function PokeCards() {
   const pokemonsAlt = useSelector((state) => state.pokemonsAlt)
   const currentPage = useSelector((state) => state.currentPage)
 
-  //console.log('A VER LOS POKE')
-  //const filtered = useSelector((state) => state.filtered)
   const loading = useSelector((state) => state.loading)
   
   const pokePerPage = 12
@@ -37,8 +34,6 @@ function PokeCards() {
   const realPage = (currentPage / pokePerPage) + 1
 
   function show(data) {
-    console.log(data)
-    console.log(pokemonsAlt)
     return data?.length ? (data.map((poke) => {
       if (poke.id?.length) {
         return (
@@ -72,12 +67,16 @@ function PokeCards() {
         <Order />
       </div>
       <div className={style.Cards}>
-        {loading ? (<img height='100px' width='100px' src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAyOWI4YmQ5LWNiNWEtNDFlNC05YzdlLWVlNTE2ZmFjZTliYlwvZGF5bzNvdy03YWM4NmMzMS04YjJiLTQ4MTAtODlmMi1lNjEzNGNhZjFmMmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ooubhxjHp9PIMhVxvCFHziI6pxDAS8glXPWenUeomWs" alt='Loading... please wait' />) : pokemonsAlt?.length > 0 ? (show(pokemonsAlt)) : (show(pokemons))}
+        {loading ? (<img
+                      height='100px' 
+                      width='100px' 
+                      src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAyOWI4YmQ5LWNiNWEtNDFlNC05YzdlLWVlNTE2ZmFjZTliYlwvZGF5bzNvdy03YWM4NmMzMS04YjJiLTQ4MTAtODlmMi1lNjEzNGNhZjFmMmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ooubhxjHp9PIMhVxvCFHziI6pxDAS8glXPWenUeomWs" 
+                      alt='Loading... please wait' 
+                    />) : pokemonsAlt?.length > 0 ? (show(pokemonsAlt)) : (show(pokemons))}
       </div>
       <div className={style.Pages}>
         {(realPage>1)? <button className={style.Buttons} onClick={previousPage}>Previous</button> : <p/> }
         <button className={style.Buttons}>Page {realPage}</button>
-        {/* <button className={style.Buttons} onClick={nextPage}>Next</button> */}
         {(realPage>4)? <p/> : <button className={style.Buttons} onClick={nextPage}>Next</button>}
       </div>
     </div>
