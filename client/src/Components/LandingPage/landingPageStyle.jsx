@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-//import pikachuLanding from '../../Images/pikachuLanding'
 
 export const LandingStyle = styled.div`
     background: url('https://www.pixelstalk.net/wp-content/uploads/2016/03/Pokemon-video-games-pikachu-background-wallpaper.jpg');
